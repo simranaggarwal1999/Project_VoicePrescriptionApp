@@ -96,15 +96,22 @@ function makeFinalTable() {
         tr.appendChild(th)
         tr.appendChild(td)
     }
-    console.log(divPreviewTable)
-    console.log(divPreviewTable.scrollHeight)
-    console.log(divPreviewTable.scrollWidth)
+    console.log( divPreviewTable.innerHTML+"");
+    console.log("`````````````````````````````");
+    console.log(divPreviewTable.innerHTML);
+console.log(typeof divPreviewTable)
+    // console.log(divPreviewTable.scrollHeight)
+    // console.log(divPreviewTable.scrollWidth)
 }
 
 //create pdf  
 function generatePDF() {
-    let email=inputEmail.value
-    a4 = [divPreviewTable.scrollHeight, divPreviewTable.scrollWidth]; // for a4 size paper width and height  
+    let email=inputEmail.value;
+    a4 = [divPreviewTable.scrollHeight, divPreviewTable.scrollWidth]; // for a4 size paper width and height
+    
+    // send Email is defined in frontend.js  
+
+    sendEmail(divPreviewTable.innerHTML+"",email); 
     getCanvas().then(function (canvas) {
         var
             img = canvas.toDataURL("image/png"),
