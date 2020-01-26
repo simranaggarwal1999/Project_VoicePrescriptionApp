@@ -84,9 +84,10 @@ button:focus {
 }   
 
 
+.preview-table{
+    display: none;
+}
 
-/* -- Demo ads -- */
-
-@media (max-width: 1200px) {
-    #bsaHolder{ display:none;}
+.active{
+    display: block;
 }

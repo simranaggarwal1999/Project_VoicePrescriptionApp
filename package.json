@@ -1,26 +1,21 @@
 {
-  "name": "voice-prescriptionapp",
+  "name": "voicePrescriptionApp",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "html2canvas": "^1.0.0-rc.5",
+    "latest-version": "^5.1.0",
+    "nodemailer": "^6.4.2",
+    "pdfmake": "^0.1.63"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start":"nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/simranaggarwal1999/VoicePrescriptionApp.git"
-  },
+  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/simranaggarwal1999/VoicePrescriptionApp/issues"
-  },
-  "homepage": "https://github.com/simranaggarwal1999/VoicePrescriptionApp#readme",
-  "dependencies": {
-    "axios": "^0.19.2",
-    "express": "^4.17.1",
-    "latest-version": "^5.1.0",
-    "nodemon": "^2.0.2"
-  }
+  "license": "ISC"
 }

@@ -82,17 +82,14 @@ namenotes.addEventListener("click", function (event) {
     let idx = arr[0]
     let guide = arr[1]
     if (guide == "listen-note") {
-        console.log(namecurrenttarget.children)
+        // console.log(namecurrenttarget.children)
         let nameread = namecurrenttarget.children[idx].childNodes[3].textContent;
-        console.log(nameread)
+        // console.log(nameread)
         readOutLoudname(nameread)
-        console.log(2)
     }
     else if (guide == "delete-note") {
         let namedelete = namecurrenttarget.children[idx].childNodes[3].textContent;
         deletename(namedelete);
-
-
     }
 
 })
@@ -100,15 +97,7 @@ namenotes.addEventListener("click", function (event) {
 //Speech Synthesis
 function readOutLoudname(message) {
     console.log("name read out called")
-    var speech = new SpeechSynthesisUtterance();
-    var voices = speechSynthesis.getVoices();
-    console.log(voices)
-    speech.text = message;
-    speech.volume = 1;
-    speech.rate = 1;
-    speech.pitch = 1;
-    speech.voice = voices[0];
-    console.log(speech)
+    var speech = new SpeechSynthesisUtterance(`${message}`);
     window.speechSynthesis.speak(speech);
 }
 

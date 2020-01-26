@@ -82,17 +82,14 @@ prescriptionnotes.addEventListener("click", function (event) {
     let idx = arr[0]
     let guide = arr[1]
     if (guide == "listen-note") {
-        console.log(prescriptioncurrenttarget.children)
+        // console.log(prescriptioncurrenttarget.children)
         let prescriptionread = prescriptioncurrenttarget.children[idx].childNodes[3].textContent;
-        console.log(prescriptionread)
+        // console.log(prescriptionread)
         readOutLoudprescription(prescriptionread)
-        console.log(2)
     }
     else if (guide == "delete-note") {
         let prescriptiondelete = prescriptioncurrenttarget.children[idx].childNodes[3].textContent;
         deleteprescription(prescriptiondelete);
-
-
     }
 
 })
@@ -100,15 +97,7 @@ prescriptionnotes.addEventListener("click", function (event) {
 //Speech Synthesis
 function readOutLoudprescription(message) {
     console.log("prescription read out called")
-    var speech = new SpeechSynthesisUtterance();
-    var voices = speechSynthesis.getVoices();
-    console.log(voices)
-    speech.text = message;
-    speech.volume = 1;
-    speech.rate = 1;
-    speech.pitch = 1;
-    speech.voice = voices[0];
-    console.log(speech)
+    var speech = new SpeechSynthesisUtterance(`${message}`);
     window.speechSynthesis.speak(speech);
 }
 

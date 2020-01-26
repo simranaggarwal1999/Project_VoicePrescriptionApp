@@ -82,17 +82,14 @@ advicenotes.addEventListener("click", function (event) {
     let idx = arr[0]
     let guide = arr[1]
     if (guide == "listen-note") {
-        console.log(advicecurrenttarget.children)
+        // console.log(advicecurrenttarget.children)
         let adviceread = advicecurrenttarget.children[idx].childNodes[3].textContent;
-        console.log(adviceread)
+        // console.log(adviceread)
         readOutLoudadvice(adviceread)
-        console.log(2)
     }
     else if (guide == "delete-note") {
         let advicedelete = advicecurrenttarget.children[idx].childNodes[3].textContent;
         deleteadvice(advicedelete);
-
-
     }
 
 })
@@ -100,15 +97,7 @@ advicenotes.addEventListener("click", function (event) {
 //Speech Synthesis
 function readOutLoudadvice(message) {
     console.log("advice read out called")
-    var speech = new SpeechSynthesisUtterance();
-    var voices = speechSynthesis.getVoices();
-    console.log(voices)
-    speech.text = message;
-    speech.volume = 1;
-    speech.rate = 1;
-    speech.pitch = 1;
-    speech.voice = voices[0];
-    console.log(speech)
+    var speech = new SpeechSynthesisUtterance(`${message}`);
     window.speechSynthesis.speak(speech);
 }
 
