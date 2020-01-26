@@ -95,14 +95,16 @@ function makeFinalTable() {
         finalTableBody.appendChild(tr)
         tr.appendChild(th)
         tr.appendChild(td)
-    console.log(document);
     }
+    console.log(divPreviewTable)
+    console.log(divPreviewTable.scrollHeight)
+    console.log(divPreviewTable.scrollWidth)
 }
 
 //create pdf  
 function generatePDF() {
     let email=inputEmail.value
-    a4 = [700, 841.89]; // for a4 size paper width and height  
+    a4 = [divPreviewTable.scrollHeight, divPreviewTable.scrollWidth]; // for a4 size paper width and height  
     getCanvas().then(function (canvas) {
         var
             img = canvas.toDataURL("image/png"),
@@ -112,7 +114,6 @@ function generatePDF() {
             });
         doc.addImage(img, 'JPEG', 20, 20);
         // doc.mailDoc(true, "akunagpal99@gmail.com", "", "", "hbdsj");
-
         doc.save('report.pdf');
         // await email(options)
     });
