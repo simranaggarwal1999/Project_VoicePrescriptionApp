@@ -1,7 +1,7 @@
 async function sendEmail(html, email) {
   const options = {
     html: html,
-    subject: "You Prescription",
+    subject: "Prescription",
     recieversEmailId: email
   };
   try {

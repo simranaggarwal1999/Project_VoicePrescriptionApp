@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const emailer = require("./server");
+const emailer = require("./configs/server");
 app.use(express.static("public"));
 app.use(express.json());
 app.post("/email", async function(req, res) {
@@ -13,7 +13,7 @@ app.post("/email", async function(req, res) {
       });
     } else {
       res.json({
-        result: "enter data of user"
+        result: "enter data of patient"
       });
     }
   } catch (err) {

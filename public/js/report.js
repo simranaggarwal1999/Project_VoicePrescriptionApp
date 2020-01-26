@@ -1,8 +1,9 @@
 const sTable = document.getElementsByClassName("table-final");
 let divPreviewTable = document.querySelector(".preview-table")
-let inputEmail=document.querySelector(".input-email")
+let inputEmail = document.querySelector(".input-email")
 const finalreportbutton = document.querySelector("#final-report")
 const finalpdfbutton = document.querySelector("#final-pdf")
+const sendpdfbutton = document.querySelector("#send-pdf")
 const finalTableBody = document.querySelector(".table-final-body")
 const namelist = getfinalnamelist()
 const symptomslist = getfinalsymptomslist()
@@ -96,29 +97,24 @@ function makeFinalTable() {
         tr.appendChild(th)
         tr.appendChild(td)
     }
-    console.log( divPreviewTable.innerHTML+"");
+    console.log(divPreviewTable.innerHTML + "");
     console.log("`````````````````````````````");
     console.log(divPreviewTable.innerHTML);
-console.log(typeof divPreviewTable)
+    console.log(typeof divPreviewTable)
     // console.log(divPreviewTable.scrollHeight)
     // console.log(divPreviewTable.scrollWidth)
 }
 
 //create pdf  
 function generatePDF() {
-    let email=inputEmail.value;
     a4 = [divPreviewTable.scrollHeight, divPreviewTable.scrollWidth]; // for a4 size paper width and height
-    
-    // send Email is defined in frontend.js  
-
-    sendEmail(divPreviewTable.innerHTML+"",email); 
     getCanvas().then(function (canvas) {
         var
-            img = canvas.toDataURL("image/png"),
-            doc = new jsPDF({
-                unit: 'px',
-                format: 'a4'
-            });
+        img = canvas.toDataURL("image/png"),
+        doc = new jsPDF({
+            unit: 'px',
+            format: 'a4'
+        });
         doc.addImage(img, 'JPEG', 20, 20);
         // doc.mailDoc(true, "akunagpal99@gmail.com", "", "", "hbdsj");
         doc.save('report.pdf');
@@ -141,4 +137,17 @@ finalreportbutton.addEventListener("click", function () {
 
 finalpdfbutton.addEventListener("click", function () {
     generatePDF()
+})
+
+sendpdfbutton.addEventListener("click", function(){
+    let email = inputEmail.value;
+    try {
+        if (email) {
+            // send Email is defined in frontend.js  
+            sendEmail(divPreviewTable.innerHTML + "", email);
+        }
+    } catch (err) {
+        alert("Either Patient's email is not entered or Patient's prescription is not generated")
+        console.log(err)
+    }
 })
