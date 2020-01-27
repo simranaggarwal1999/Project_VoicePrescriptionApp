@@ -1,5 +1,6 @@
 const sTable = document.getElementsByClassName("table-final");
 let divPreviewTable = document.querySelector(".preview-table")
+let divfinal=document.querySelector(".final")
 let inputEmail = document.querySelector(".input-email")
 const finalreportbutton = document.querySelector("#final-report")
 const finalpdfbutton = document.querySelector("#final-pdf")
@@ -82,7 +83,7 @@ function generateFinalReport() {
 }
 
 function makeFinalTable() {
-    divPreviewTable.classList.add("active");
+    divfinal.classList.add("active");
     for (var key in finalreport) {
         let tr = document.createElement("tr")
         tr.setAttribute("class", "row")
@@ -97,10 +98,10 @@ function makeFinalTable() {
         tr.appendChild(th)
         tr.appendChild(td)
     }
-    console.log(divPreviewTable.innerHTML + "");
-    console.log("`````````````````````````````");
-    console.log(divPreviewTable.innerHTML);
-    console.log(typeof divPreviewTable)
+    // console.log(divPreviewTable.innerHTML + "");
+    // console.log("`````````````````````````````");
+    // console.log(divPreviewTable.innerHTML);
+    // console.log(typeof divPreviewTable)
     // console.log(divPreviewTable.scrollHeight)
     // console.log(divPreviewTable.scrollWidth)
 }
@@ -142,7 +143,7 @@ finalpdfbutton.addEventListener("click", function () {
 sendpdfbutton.addEventListener("click", function(){
     let email = inputEmail.value;
     try {
-        if (email) {
+        if (email && divPreviewTable) {
             // send Email is defined in frontend.js  
             sendEmail(divPreviewTable.innerHTML + "", email);
         }
