@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
-const appPassword=require("../configs/config").APP
+// const appPassword=require("../configs/config").APP
+const appPassword=process.env.APP
 module.exports = async function (options) {
     let mailTransporter = nodemailer.createTransport({
         service: "gmail",
